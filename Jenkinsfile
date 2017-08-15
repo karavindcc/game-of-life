@@ -1,29 +1,30 @@
 pipeline {
 	agent any
-       stages {
+
+	stages {
         stage('Build') {
-            steps {
-                build job: 'Build'
-		echo 'Building..'
+             steps {
+               	build job: 'Build'
+		echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
         stage('Sonar') {
             steps {
 		build job: 'report-generation'
-                echo 'Sonar reports..'
+		echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
         stage('HP Fortify') {
             steps {
 		build job: 'perform code review'
-                echo 'Fortify reports..'
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
 	stage('Deply') {
             steps {
 		build job: 'deploy'
-                echo 'Deploying..' 
-	    }
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}" 
+		}
 	}   
 }
 }

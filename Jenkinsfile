@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                build job: 'Build', propagate: false, wait: false
+                build job: 'Build'
 		echo 'Building..'
 		junit '**/target/*.xml'
             }

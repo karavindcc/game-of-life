@@ -1,10 +1,11 @@
 pipeline {
     agent any
+	checkout([$class: 'GitSCM', branches: [[name: '*/continuous-delivery-demo']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/karavindcc/game-of-life.git']]])
 
     stages {
         stage('Build') {
             steps {
-                build job: 'Build'
+                build job: 'Build', propagate: false, wait: false
 		echo 'Building..'
 		junit '**/target/*.xml'
             }

@@ -5,7 +5,7 @@ pipeline {
             steps {
                 build job: 'Build'
 		echo 'Building..'
-		junit '**/target/*.xml'
+		//junit '**/target/*.xml'
             }
         }
         stage('Sonar') {

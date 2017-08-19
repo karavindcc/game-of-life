@@ -3,12 +3,10 @@ pipeline {
 	stages {
         stage('Build') {
              steps {
-               	build job: 'Build'
-				script {
+               	script {
                     def bRun = build 'Build' 
-                    echo 'last 100 lines of BuildB'
                     for(String line : bRun.getRawBuild().getLog(100)){
-                        echo line
+                    echo line
 				}	
             }
         }

@@ -5,7 +5,7 @@ pipeline {
              steps {
                	build job: 'Build'
 				script {
-                    def bRun = build 'anotherJob' 
+                    def bRun = build 'Build' 
                     echo 'last 100 lines of BuildB'
                     for(String line : bRun.getRawBuild().getLog(100)){
                         echo line

@@ -1,11 +1,14 @@
 pipeline {
 	agent any
-		
 	stages {
         stage('Build') {
              steps {
                	build job: 'Build'
-		echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+		script {
+                    def bRun = build 'anotherJob' 
+                    echo 'last 100 lines of BuildB'
+                    for(String line : bRun.getRawBuild().getLog(100)){
+                        echo line
             }
         }
         stage('Sonar') {

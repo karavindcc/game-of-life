@@ -3,12 +3,10 @@ pipeline {
 	stages {
         stage('Build') {
              steps {
-               	script {
-                    def bRun = build 'Build' 
-                    for(String line : bRun.getRawBuild().getLog(100)){
-                    echo line
-				}	
+               	build job: 'report-generation'
+				echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
+			echo "${env.BUILD_ID} success"
         }
 		}
         stage('Sonar') {

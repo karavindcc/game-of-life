@@ -3,7 +3,7 @@ pipeline {
 	stages {
         stage('Build') {
              steps {
-               	build job: 'report-generation'
+               	build job: 'Build'
 				echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
 			echo "${env.BUILD_ID} success"
